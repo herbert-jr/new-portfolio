@@ -1,35 +1,16 @@
 'use client'
 
-import Lenis from '@studio-freight/lenis'
 import Link from 'next/link'
-import { useEffect, useRef } from 'react'
 
 interface LinksProps extends React.HTMLAttributes<HTMLAnchorElement> {
-  link: string
-  title: string
+  href: string
+  children: React.ReactNode
 }
 
-function Links({ link, title, ...rest }: LinksProps) {
-  const linkRef = useRef<HTMLAnchorElement>(null)
-  useEffect(() => {
-    const lenis = new Lenis()
-
-    function raf(time: unknown) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-
-    linkRef.current?.addEventListener('click', () => {
-      lenis.scrollTo(link)
-    })
-    requestAnimationFrame(raf)
-  }, [link])
-
+function Links({ href, children, ...rest }: LinksProps) {
   return (
-    <Link href={link} passHref legacyBehavior>
-      <a ref={linkRef} {...rest}>
-        {title}
-      </a>
+    <Link href={href} passHref legacyBehavior>
+      <a {...rest}>{children}</a>
     </Link>
   )
 }
