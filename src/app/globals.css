@@ -2,7 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
 
+body {
+  color: #292928;
+  background-color: #fff7ed;
+}
 
 
 
