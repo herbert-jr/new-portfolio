@@ -10,7 +10,9 @@ interface MainProps extends React.HTMLAttributes<HTMLElement> {
 
 function Main({ children, ...rest }: MainProps) {
   useEffect(() => {
-    const lenis = new Lenis()
+    const lenis = new Lenis({
+      duration: 1.5,
+    })
 
     function raf(time: unknown) {
       lenis.raf(time)
